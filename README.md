@@ -11,7 +11,7 @@
 3. `module_info.c` - `MODULE_*` 메타데이터와 `modinfo` 확인
 4. `module_param.c` - `module_param()`과 `insmod name=value` 형식 확인
 5. `usage_provider.c`, `usage_consumer.c` - usage count와 모듈 의존성 확인
-6. `worksheets/ch09_observation.md` - 관찰 기록 및 제출
+6. 실습 결과보고서 작성 및 제출
 
 ---
 
@@ -72,8 +72,6 @@ embweek11/
 │   ├── check_env.sh
 │   ├── clean_loaded_modules.sh
 │   └── run_smoke_test.sh
-├── worksheets/
-│   └── ch09_observation.md
 ├── .gitignore
 └── README.md
 ```
@@ -339,4 +337,3 @@ make clean
    - `insmod`와 `rmmod`의 역할
    - usage count가 필요한 이유
    - Achro-EM Kit 벤더 커널 환경과 일반 Raspberry Pi OS 환경의 차이
-
