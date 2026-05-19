@@ -1,9 +1,9 @@
 # 임베디드 시스템 설계실습 - 커널 모듈 이해 실습
 
 ## 1. 실습 개요
-본 실습은 교재 9장 **모듈 프로그래밍**의 내용을 직접 코딩 과제로 확장하기보다, Raspberry Pi OS에서 실제 커널 모듈을 빌드하고 적재/제거하면서 교재의 핵심 개념을 확인하는 것을 목표로 한다.
+본 실습은 교재 9장 **모듈 프로그래밍**의 내용을 Raspberry Pi OS에서 실제 커널 모듈을 빌드하고 적재/제거하면서 교재의 핵심 개념을 확인하는 것을 목표로 한다.
 
-학생은 제공된 예제 코드를 수정하지 않는다. 대신 명령어 실행 결과를 관찰하고, 교재의 용어와 실제 시스템 출력이 어떻게 연결되는지 기록한다.
+명령어 실행 결과를 관찰하고, 교재의 용어와 실제 시스템 출력이 어떻게 연결되는지 기록한다.
 
 이번 실습은 다음 순서로 진행한다.
 1. `scripts/check_env.sh` - 커널 버전, 빌드트리, 컴파일러 환경 확인
@@ -17,9 +17,7 @@
 
 ## 2. 실습 운영 원칙
 - 본 실습은 **최신 Raspberry Pi OS가 설치된 일반 Raspberry Pi**를 기준으로 진행한다.
-- Bookworm/Trixie 여부보다 중요한 것은 `/lib/modules/$(uname -r)/build`가 정상인지이다.
-- Achro-EM Kit의 벤더 커널 환경에서는 빌드트리가 없을 수 있으므로, 본 레포의 빌드 실습은 일반 Raspberry Pi에서 수행한다.
-- 학생은 커널 모듈 코드를 새로 작성하지 않는다.
+- Achro-EM Kit의 벤더 커널 환경에서는 빌드트리가 없을 수 있으므로, 본 레포의 빌드 실습은 Raspberry Pi에서 수행한다.
 - 제공된 예제 코드를 읽고, 빌드/적재/제거/로그 확인 결과를 해석한다.
 - `insmod`로 올린 모듈은 실습이 끝나면 반드시 `rmmod`로 제거한다.
 - 커널 로그는 `dmesg -T`로 확인한다.
@@ -48,11 +46,6 @@ sudo apt install -y build-essential
 64-bit Raspberry Pi OS:
 ```bash
 sudo apt install -y linux-headers-rpi-v8
-```
-
-32-bit Raspberry Pi OS:
-```bash
-sudo apt install -y linux-headers-rpi-{v6,v7,v7l}
 ```
 
 환경 확인:
@@ -109,7 +102,6 @@ test -e /lib/modules/$(uname -r)/build/Makefile && echo OK || echo MISSING
 
 ### 4.3 확인 사항
 - 내 Raspberry Pi의 커널 버전은 무엇인가?
-- 내 Raspberry Pi는 32-bit인가, 64-bit인가?
 - `/lib/modules/$(uname -r)/build`가 존재하는가?
 - 이 환경에서 제공된 `.ko` 예제를 빌드할 수 있는가?
 
@@ -305,21 +297,10 @@ sudo rmmod hello_module
 - 이미 제거된 모듈을 다시 제거하면 어떤 에러가 발생하는가?
 - 이런 상황에서 `lsmod`와 `dmesg` 중 무엇을 먼저 확인해야 하는가?
 
----
-
-## 11. 관찰 기록지
-
-실습 결과는 아래 파일을 기준으로 정리한다.
-
-```bash
-less worksheets/ch09_observation.md
-```
-
-제출 시에는 `worksheets/ch09_observation.md`의 질문에 대한 답을 별도 문서로 작성하거나, 같은 형식을 복사해서 채워 제출한다.
 
 ---
 
-## 12. 정리 명령
+## 11. 정리 명령
 실습 중 모듈이 남아 있으면 다음 명령으로 정리한다.
 
 ```bash
@@ -327,15 +308,12 @@ bash scripts/clean_loaded_modules.sh
 make clean
 ```
 
-TA가 전체 동작을 한 번에 검증할 때는 다음 스크립트를 사용할 수 있다.
-
-```bash
-bash scripts/run_smoke_test.sh
-```
 
 ---
 
-## 13. 제출물
+## 12. 제출물
+실습 과정과 결과를 포함하는 결과보고서를 자유롭게 작성한다.
+
 1. 환경 확인 결과
    - `uname -a`
    - `/lib/modules/$(uname -r)/build` 확인 결과
