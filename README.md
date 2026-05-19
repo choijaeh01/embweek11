@@ -25,7 +25,7 @@
 ---
 
 ## 3. 실습 환경 및 준비물
-- Raspberry Pi 4 또는 Raspberry Pi 5
+- Raspberry Pi 5
 - Raspberry Pi OS
 - SSH 접속 가능 환경
 - `sudo` 권한이 있는 사용자 계정
@@ -33,7 +33,7 @@
 
 레포 다운로드:
 ```bash
-git clone <repo-url> embweek11
+git clone https://github.com/choijaeh01/embweek11
 cd embweek11
 ```
 
